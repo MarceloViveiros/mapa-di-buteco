@@ -1,0 +1,125 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#map {
+    width: 100%;
+    height: 100vh;
+    z-index: 1; /* Mantém o mapa no fundo */
+}
+
+/* --- ESTILOS DO CABEÇALHO E BUSCA --- */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: #d35400; /* Laranja tema do festival */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 15px;
+    z-index: 1002; /* Fica acima de tudo, inclusive da busca */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.header-title {
+    margin: 0;
+    font-size: 20px;
+}
+
+.search-container {
+    position: fixed;
+    top: 75px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000; /* Fica abaixo do menu dropdown */
+    width: 90%;
+    max-width: 400px;
+}
+
+#search-input {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    font-size: 16px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    overflow: hidden;
+    min-width: 200px;
+}
+
+.dropdown-menu button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background: none;
+    text-align: left;
+    font-size: 16px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    color: #333;
+}
+
+.dropdown-menu button:hover {
+    background-color: #f5f5f5;
+}
+
+/* --- ESTILOS DO NOSSO BALÃO (POPUP) --- */
+.leaflet-popup-content { width: 280px !important; margin: 15px; }
+.popup-img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
+.popup-title { margin: 0; font-size: 18px; color: #d35400; font-weight: 800; }
+.popup-address { margin: 5px 0 10px 0; font-size: 11px; color: #7f8c8d; }
+.box-prato { background-color: #fcf3eb; border-left: 4px solid #d35400; padding: 8px; margin-bottom: 10px; border-radius: 4px; }
+.nome-prato { margin: 0; font-size: 14px; font-weight: bold; color: #2c3e50; }
+.desc-prato { margin: 4px 0 0 0; font-size: 12px; color: #34495e; font-style: italic; }
+.info-extra { font-size: 11px; color: #555; margin-bottom: 4px; }
+
+.area-botoes { display: flex; gap: 8px; margin-top: 15px; }
+.btn { 
+    flex: 1; 
+    text-align: center; 
+    padding: 10px; 
+    border-radius: 6px; 
+    text-decoration: none; 
+    font-size: 13px; 
+    font-weight: bold; 
+    color: white !important; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.btn-google { background-color: #4285F4; }
+.btn-uber { background-color: #000000; }
+
+/* --- ANIMAÇÃO PINO AZUL --- */
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(52, 152, 219, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+}
