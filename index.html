@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa di Buteco - Juiz de Fora</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+
+        /* --- ESTILOS DO NOSSO NOVO BALÃO (POPUP) --- */
+        .leaflet-popup-content {
+            width: 280px !important;
+            margin: 15px;
+        }
+
+        .popup-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .popup-title {
+            margin: 0;
+            font-size: 18px;
+            color: #d35400;
+            font-weight: 800;
+        }
+
+        .popup-address {
+            margin: 5px 0 10px 0;
+            font-size: 11px;
+            color: #7f8c8d;
+        }
+
+        .box-prato {
+            background-color: #fcf3eb;
+            border-left: 4px solid #d35400;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+
+        .nome-prato {
+            margin: 0;
+            font-size: 14px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .desc-prato {
+            margin: 4px 0 0 0;
+            font-size: 12px;
+            color: #34495e;
+            font-style: italic;
+        }
+
+        .info-extra {
+            font-size: 11px;
+            color: #555;
+            margin-bottom: 4px;
+        }
+
+        .area-botoes {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            text-align: center;
+            padding: 10px 5px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .btn-detalhes {
+            background-color: #27ae60;
+        }
+
+        .btn-uber {
+            background-color: #000000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        // 1. Inicializa o Mapa em JF
+        const map = L.map('map').setView([-21.7664, -43.3496], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap'
+        }).addTo(map);
+
+        // 2. Consome o nosso NOVO arquivo de dados (Ajuste o nome se necessário)
+        fetch('bares_finais.json')
+            .then(response => response.json())
+            .then(bares => {
+
+                bares.forEach(bar => {
+                    if (bar.latitude && bar.longitude) {
+
+                        const marker = L.marker([bar.latitude, bar.longitude]).addTo(map);
+
+                        // 3. URLs de Navegação (Lógica Baseada em Texto)
+                        // Juntamos o nome e o endereço e "encodamos" para a URL não quebrar com espaços e acentos
+                        const buscaExata = encodeURIComponent(bar.nome + ', ' + bar.endereco);
+
+                        // Link Oficial de Rotas do Google Maps
+                        const linkGoogleMaps = `https://www.google.com/maps/dir/?api=1&destination=${buscaExata}`;
+
+                        // Link do Uber forçando a busca pelo endereço formatado em vez de coordenadas
+                        const linkUber = `https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=${buscaExata}&dropoff[nickname]=${encodeURIComponent(bar.nome)}`;
+
+                        // 4. Montando o HTML do Balão (Apenas 2 botões lado a lado)
+                        const balao = `
+                            <div>
+                                <img src="${bar.imagem}" alt="${bar.nome}" class="popup-img">
+                                <h3 class="popup-title">${bar.nome}</h3>
+                                <p class="popup-address">📍 ${bar.endereco}</p>
+                                
+                                <div class="box-prato">
+                                    <p class="nome-prato">🍽️ ${bar.prato}</p>
+                                    <p class="desc-prato">${bar.descricao_prato}</p>
+                                </div>
+
+                                <p class="info-extra"><strong>📞 Tel:</strong> ${bar.telefone}</p>
+                                <p class="info-extra"><strong>🕒 Horário:</strong> ${bar.horario}</p>
+
+                                <div class="area-botoes" style="display: flex; gap: 8px; margin-top: 15px;">
+                                    <a href="${linkGoogleMaps}" target="_blank" class="btn btn-google" style="flex: 1; background-color: #4285F4; text-align: center; padding: 10px; color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">Google Maps</a>
+                                    <a href="${linkUber}" target="_blank" class="btn btn-uber" style="flex: 1; background-color: #000000; text-align: center; padding: 10px; color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">Chamar Uber</a>
+                                </div>
+                            </div>
+                        `;
+
+                        marker.bindPopup(balao);
+                    }
+                });
+            })
+            .catch(erro => console.error("Erro ao carregar o mapa:", erro));
+
+        // 5. GEOLOCALIZAÇÃO EM TEMPO REAL
+        if ("geolocation" in navigator) {
+            // Criamos um ícone azul especial para o usuário
+            const iconeUsuario = L.divIcon({
+                className: 'user-location-icon',
+                html: '<div style="background-color: #3498db; width: 15px; height: 15px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 10px rgba(0,0,0,0.5); animation: pulse 2s infinite;"></div>',
+                iconSize: [21, 21]
+            });
+
+            let marcadorUsuario = null;
+
+            // Função que roda toda vez que a posição muda
+            navigator.geolocation.watchPosition((pos) => {
+                const lat = pos.coords.latitude;
+                const lon = pos.coords.longitude;
+
+                if (marcadorUsuario) {
+                    // Se o pino já existe, só movemos ele
+                    marcadorUsuario.setLatLng([lat, lon]);
+                } else {
+                    // Se é a primeira vez, criamos o pino e centralizamos o mapa nele
+                    marcadorUsuario = L.marker([lat, lon], { icon: iconeUsuario }).addTo(map);
+                    marcadorUsuario.bindPopup("Você está aqui! 🍺").openPopup();
+                    map.setView([lat, lon], 15); // Zoom mais próximo no usuário
+                }
+            }, (erro) => {
+                console.error("Erro ao capturar localização:", erro);
+            }, {
+                enableHighAccuracy: true // Tenta usar o GPS para maior precisão
+            });
+        }
+
+        // Estilo para a animação de pulsação do pino azul (coloque dentro da sua tag <style>)
+        /*
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(52, 152, 219, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+        }
+        */
+    </script>
+</body>
+
+</html>

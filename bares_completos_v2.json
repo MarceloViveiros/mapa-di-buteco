@@ -1,0 +1,402 @@
+[
+    {
+        "nome": "Adega Bar",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115021/adegabar_carurumineiro_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/adega-bar/",
+        "endereco": "Av. Dr. Francisco Álvares de Assis, 490 | Retiro, Juiz de Fora – MG",
+        "prato": "Caruru mineiro",
+        "descricao_prato": "Uma fusão da Bahia com Minas: caruru de taioba, finalizado com maçã de peito cozida. O sabor do dendê e da castanha se encontram com a taioba e a maçã de peito cozida na panela, resultando em um petisco raiz e cheio de brasilidade.",
+        "telefone": "32988931082",
+        "horario": "Quarta-feira: 18h – 23h | Quinta-feira: 18h – 23h | Sexta-feira: 18h – 23h | Sábado: 12h – 0h | Domingo: 12h – 23h | Terça-feira: 18h – 23h"
+    },
+    {
+        "nome": "Bar Dias",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115022/bardias_sabordebuteco_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/3695-revision-v1/",
+        "endereco": "R. Luiz Rocha, 2 | Santa Terezinha, Juiz de Fora – MG",
+        "prato": "Sabor de buteco",
+        "descricao_prato": "Nhoque de agrião acompanhado de ragu de rabada e crispim de parmesão.",
+        "telefone": "",
+        "horario": "Segunda-feira: 10h – 23h | Terça-feira: 10h – 23h | Quarta-feira: 10h – 23h | Quinta-feira: 10h – 23h | Sexta-feira: 10h – 23h | Sábado: 10h – 23h | Domingo: 10h – 19h"
+    },
+    {
+        "nome": "Bar do Abílio",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115024/bardoabilio_brigadeirodebuteco_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/3697-revision-v1/",
+        "endereco": "R. Fonseca Hermes, 180 | Centro, Juiz de Fora – MG",
+        "prato": "Brigadeiro de buteco",
+        "descricao_prato": "Bolinho de queijo muçarela e bacon, recheado com espinafre e goiabada cascão, empanado no macarrão cabelo-de-anjo.",
+        "telefone": "3232156216",
+        "horario": "Segunda-feira: 11h – 22h | Terça-feira: 11h – 22h | Quarta-feira: 11h – 22h | Quinta-feira: 11h – 22h | Sexta-feira: 11h – 22h | Sábado: 11h – 16h30"
+    },
+    {
+        "nome": "Bar do Antônio",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115026/bardoantonio_mostardamasnaofalha_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/bar-do-antonio/",
+        "endereco": "R. José Lourenço, 1262 | São Pedro, Juiz de Fora – MG",
+        "prato": "Mostarda mas não falha",
+        "descricao_prato": "Cama de angu da roça temperado, rodeada de mostarda refogada, coroada com polpetas cozidas no molho de tomate artesanal, recheadas de queijo minas meia cura.",
+        "telefone": "32987090353",
+        "horario": "Terça-feira: 17h – 23h30 | Quarta-feira: 17h – 23h30 | Quinta-feira: 17h – 23h30 | Sexta-feira: 16h – 23h30 | Sábado: 11h – 23h30 | Domingo: 11h – 19h"
+    },
+    {
+        "nome": "Bar do Bené",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115129/bardobene_deucupimnoagriao_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/3699-revision-v1/",
+        "endereco": "Rua João Batista Sampaio, 150 | São Pedro, Juiz de Fora – MG",
+        "prato": "Deu cupim no agrião",
+        "descricao_prato": "Bolinho de agrião recheado com cupim ao vinho e requeijão.",
+        "telefone": "32988136345",
+        "horario": "Terça-feira: 16h – 22h | Quarta-feira: 16h – 23h | Quinta-feira: 16h – 23h | Sexta-feira: 16h – 23h | Sábado: 11h30 – 23h30"
+    },
+    {
+        "nome": "Bar do Brejo",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115130/bardobrejo_aguanaboca_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/3703-revision-v1/",
+        "endereco": "R. Sebastião Garcia, 933 | Benfica, Juiz de Fora – MG",
+        "prato": "Água na boca",
+        "descricao_prato": "Terrine de alho-poró com bacon, acompanhada de torradinhas.",
+        "telefone": "3232227802",
+        "horario": "Terça-feira: 17h30 – 23h | Quarta-feira: 17h30 – 23h | Quinta-feira: 17h30 – 23h | Sexta-feira: 17h30 – 23h | Sábado: 17h30 – 23h"
+    },
+    {
+        "nome": "Bar do Jorge",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115132/bardojorge_confusaomineira_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/bar-do-jorge/",
+        "endereco": "Av. Pedro Henrique Krambeck, 210 | São Pedro, Juiz de Fora – MG",
+        "prato": "Confusão Mineira",
+        "descricao_prato": "Bolinhas de queijo com espinafre, recheada com alcatra suína marinada na cerveja preta, com o toque da pimenta calabresa, que traz a picância ideal. Acompanhada de um creme de doce de leite com cachaça, trazendo o equilíbrio perfeito entre o doce, o álcool e a picância.",
+        "telefone": "32988717429",
+        "horario": "Terça-feira: 16h – 23h | Quarta-feira: 16h – 23h | Quinta-feira: 16h – 23h | Sexta-feira: 16h – 23h | Sábado: 16h – 23h"
+    },
+    {
+        "nome": "Bar do Marquim",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115133/bardomarquim_achadinho_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/bar-do-marquim/",
+        "endereco": "R. Santo Antônio, 10 | Centro, Juiz de Fora – MG",
+        "prato": "Achadinho",
+        "descricao_prato": "Costela bovina cozida, refogada na cebola, tomate e agrião, servida com purê de mandioca cremoso e requeijão.",
+        "telefone": "(32) 99117-1813 | (32) 3215-2990",
+        "horario": "Segunda-feira: 17h – 23h | Terça-feira: 17h – 23h | Quarta-feira: 17h – 23h | Quinta-feira: 17h – 23h | Sexta-feira: 17h – 23h | Sábado: 14h – 23h"
+    },
+    {
+        "nome": "Bar do Passarinho",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115135/bardopassarinho_coracaodabaronesa_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/bar-do-passarinho/",
+        "endereco": "R. Rafael Zacarias, 500 | Democrata, Juiz de Fora – MG",
+        "prato": "Coração da Baronesa",
+        "descricao_prato": "Coração refogado no alho, acompanhado de torresmo de barriga feito no bafo e brócolis no ponto certo do cozimento. Para equilibrar o prato, uma geleia de rapadura levemente apimentada.",
+        "telefone": "32984021410",
+        "horario": "Quinta-feira: 18h – 22h | Sexta-feira: 18h – 22h | Sábado: 11h – 22h | Domingo: 11h – 16h"
+    },
+    {
+        "nome": "Bar do Tião",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/04/10060833/bardotiao_cestinhadesabor_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/bar-do-tiao-3/",
+        "endereco": "Rua José Appolônio dos Reis, 312 | Aeroporto, Juiz de Fora – MG",
+        "prato": "Não informado",
+        "descricao_prato": "Não informada",
+        "telefone": "(32) 988471235",
+        "horario": "Terça-feira: 17h – 23h | Quarta-feira: 17h – 23h | Quinta-feira: 17h – 23h | Sexta-feira: 17h – 23h | Sábado: 15h30 – 23h | Segunda-feira: 17h – 23h | Domingo: 12h – 18h"
+    },
+    {
+        "nome": "Bar do Torresmo",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115239/bardotorresmo_mega-lhaodesabor_amstel_juizdefora_2026_gutah_1.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/10328-revision-v1/",
+        "endereco": "Av. Darcy Vargas, 31 | Ipiranga, Juiz de Fora – MG",
+        "prato": "Mega-galhão de sabor",
+        "descricao_prato": "medalhão de pernil suína com repolho, recheado com catupiry e espinafre, empanado com farinha Panko e enrolado no bacon com o acompanhamento de um molho shoyu",
+        "telefone": "32988215465",
+        "horario": "Terça-feira: 16h – 23h | Quarta-feira: 16h – 23h | Quinta-feira: 16h – 23h | Sexta-feira: 16h – 23h | Sábado: 16h – 23h"
+    },
+    {
+        "nome": "Bar Du Buneco",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115241/bardubuneco_oiaquetrembao_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/bar-du-buneco/",
+        "endereco": "R. Eugênio Fontainha, 337 | Manoel Honório, Juiz de Fora – MG",
+        "prato": "Óia que Trem Bão",
+        "descricao_prato": ": polenta de milho em cubos fritos, servidos com um saboroso ragu de linguiça e bacon, com um frescor de um chimichurri de folhas verdes de agrião e espinafre e finalizado com tomate-cereja confitado.",
+        "telefone": "3232379153",
+        "horario": "Terça-feira: 17h – 23h | Quarta-feira: 17h – 23h30 | Quinta-feira: 17h – 23h30 | Sexta-feira: 17h – 23h30 | Sábado: 12h – 23h30 | Domingo: 12h – 21h"
+    },
+    {
+        "nome": "Bar Du Chico",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115242/barduchico_porquinhodaroca_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/bar-du-chico/",
+        "endereco": "Av. Olegário Maciel, 1147 | Paineiras, Juiz de Fora – MG",
+        "prato": "Porquinho da roça",
+        "descricao_prato": "Bolinho de pernil recheado com couve e bacon. Acompanha geleia de pimenta.",
+        "telefone": "32988994484",
+        "horario": "Terça-feira: 16h – 23h | Quarta-feira: 16h – 23h | Quinta-feira: 16h – 23h | Sexta-feira: 16h – 23h | Sábado: 16h – 23h | Domingo: 12h – 23h"
+    },
+    {
+        "nome": "Bar Santa Moderação",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115244/barsantamoderacao_vulcaodesabores_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/bar-santa-moderacao/",
+        "endereco": "R. Torreões, 57 | Santa Luzia, Juiz de Fora – MG",
+        "prato": "Vulcão de Sabores",
+        "descricao_prato": "Carne moída modelada à mão, com recheio de muçarela e mostarda, acompanhada de molho de abacaxi com pimenta.",
+        "telefone": "(32) 99942-6767 | (32) 98702-3054",
+        "horario": "Terça-feira: 18h – 22h | Quarta-feira: 18h – 22h | Quinta-feira: 18h – 22h | Sexta-feira: 18h – 22h | Sábado: 14h – 22h"
+    },
+    {
+        "nome": "Batata D’ Mola",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115347/batatad_mola_lombaouai_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/batata-d-mola/",
+        "endereco": "Av. dos Andradas, 183 | Centro, Juiz de Fora – MG",
+        "prato": "LomBÃO, Uai!",
+        "descricao_prato": "Lombo assado, servido ao molho pomodoro com couve refogada na manteiga, acompanha polenta frita e creme de moranga.",
+        "telefone": "3230260080",
+        "horario": "Segunda-feira: 17h – 23h | Terça-feira: 17h – 23h | Quarta-feira: 17h – 0h | Quinta-feira: 17h – 0h | Sexta-feira: 17h – 0h | Sábado: 17h – 0h | Domingo: 17h – 23h"
+    },
+    {
+        "nome": "Birosca",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115349/birosca_verdinhoebochecha_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/birosca/",
+        "endereco": "R. Profa. Dalva Menezes, 23 | Jardim Glória, Juiz de Fora – MG",
+        "prato": "Verdinho e Bochecha",
+        "descricao_prato": "Bochecha de porco marinada e cozida lentamente, servida ao próprio molho. Acompanhada de farofa de flocos de milho e crispy de folha do brócolis, brócolis salteado e picles de cebola-roxa.",
+        "telefone": "32985224254",
+        "horario": "Terça-feira: 16h – 23h | Quarta-feira: 16h – 23h | Quinta-feira: 16h – 23h | Sexta-feira: 16h – 23h | Sábado: 12h – 22h | Domingo: 12h – 21h"
+    },
+    {
+        "nome": "Budega do Papai",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115350/budegadopapai_budegaraiz_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/budega-do-papai/",
+        "endereco": "R. Paracatu, 349 | Santa Terezinha, Juiz de Fora – MG",
+        "prato": "Budega raiz",
+        "descricao_prato": "Costelinha de porco marinada em temperos especiais, acompanhada de polenta cremosa com toque de muçarela e finalizada com couve refogada salteada com alho, trazendo um toque de frescor e um contraste de texturas que eleva o prato a uma experiência única.",
+        "telefone": "32998842970",
+        "horario": "Terça-feira: 18h – 23h | Quarta-feira: 18h – 23h | Quinta-feira: 18h – 23h | Sexta-feira: 18h – 23h | Sábado: 12h – 23h | Domingo: 11h – 17h"
+    },
+    {
+        "nome": "Buteco do Príncipe",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115352/butecodoprincipe_bolorocolis_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/buteco-do-principe/",
+        "endereco": "R. Sebastião Ferreira, 2 | São Pedro, Juiz de Fora – MG",
+        "prato": "Bolorócolis",
+        "descricao_prato": "Um bolinho dourado por fora e macio por dentro, feito com arroz cozido com brócolis levemente refogado, que conferem textura e frescor à massa. No recheio, lascas suculentas de linguado e pedaços delicados de camarão refogado no alho e azeite aromatizado com salsinha e coentro. Acompanha molho da casa.",
+        "telefone": "32998593057",
+        "horario": "Segunda-feira: 16h – 23h | Quarta-feira: 16h – 23h | Quinta-feira: 16h – 23h | Sexta-feira: 16h – 23h | Sábado: 12h – 23h"
+    },
+    {
+        "nome": "Butiquim da Fábrica",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115353/butiquimdafabrica_pasteldobutiquim_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/butiquim-da-fabrica/",
+        "endereco": "R. Luís de Camões, 74 | São Mateus, Juiz de Fora – MG",
+        "prato": "Pastel do Butiquim",
+        "descricao_prato": "Taioba refogada na manteiga com especiarias e requeijão catupiry (6 unidades).",
+        "telefone": "32991205990",
+        "horario": "Quarta-feira: 17h – 23h30 | Quinta-feira: 17h – 23h30 | Sexta-feira: 17h – 23h30 | Sábado: 12h – 23h30 | Domingo: 12h – 17h30"
+    },
+    {
+        "nome": "Caminho da Roça",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115455/caminhodaroca_chinescaipira_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/3715-revision-v1/",
+        "endereco": "R. Espírito Santo, 738 | Centro, Juiz de Fora – MG",
+        "prato": "Chinês Caipira",
+        "descricao_prato": "Carne suína e vegetais refogados em temperos asiáticos.",
+        "telefone": "3232113482",
+        "horario": "Segunda-feira: 16h – 22h | Terça-feira: 16h – 22h | Quarta-feira: 16h – 22h | Quinta-feira: 16h – 22h | Sexta-feira: 16h – 22h | Sábado: 16h – 22h"
+    },
+    {
+        "nome": "Carlota Bar",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115457/carlotabarerestaurante_taiobatadentro_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/carlota-bar-e-restaurante/",
+        "endereco": "Rua Carlota Malta, 165 | Centro, Juiz de Fora – MG",
+        "prato": "Taioba Tá Dentro",
+        "descricao_prato": "Linguiças de pernil e bacon empanadas e recheadas com requeijão de taioba. Servidas com porção de dadinhos de angu e acompanhadas de vinagrete vermelho, feito com pimentão, pimenta-dedo-de-moça, alho e manjericão.",
+        "telefone": "3230173078",
+        "horario": "Terça-feira: 17h – 22h | Quarta-feira: 17h – 22h | Quinta-feira: 17h – 22h | Sexta-feira: 17h – 22h | Sábado: 11h – 22h | Domingo: 11h – 22h"
+    },
+    {
+        "nome": "Casarão Bar",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115458/casaraobar_quemcasaquercasarao_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/casarao-bar/",
+        "endereco": "Rua Cesário Alvim, 241 – Telheiro | São Bernardo, Juiz de Fora – MG",
+        "prato": "Quem casa quer Casarão",
+        "descricao_prato": "Bolinho de cupim, recheado com taioba e bacon, acompanhado de vinagrete de abacaxi e maionese de alho-poró.",
+        "telefone": "32991117467",
+        "horario": "Quarta-feira: 18h – 23h | Quinta-feira: 18h – 23h | Sexta-feira: 18h – 23h | Sábado: 17h – 23h | Domingo: 15h – 21h"
+    },
+    {
+        "nome": "Coliseum Bar e Restaurante",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115500/coliseumbarerestaurante_camaraoafogado_juizdefora_2026_gutah_1.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/coliseum-bar-e-restaurante/",
+        "endereco": "R. Diogo Alvares, 488 | Benfica, Juiz de Fora – MG",
+        "prato": "Camarão afogado",
+        "descricao_prato": "Caldo de couve-flor com camarão.",
+        "telefone": "3232230706",
+        "horario": "Segunda-feira: 17h – 23h30 | Terça-feira: 17h – 23h30 | Quarta-feira: 17h – 23h30 | Quinta-feira: 17h – 23h30 | Sexta-feira: 17h – 23h30 | Sábado: 11h – 23h28 | Domingo: 11h – 23h30"
+    },
+    {
+        "nome": "Costelaria Compadre Grill",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115502/costelariacompadregrill_porogodo_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/costelaria-compadre-grill/",
+        "endereco": "Pr. Artur Bernardes, 94 | Bandeirantes, Juiz de Fora – MG",
+        "prato": "Porogodó",
+        "descricao_prato": "Pão de alho-poró recheado com costela ao bafo e coberto de muçarela gratinada.",
+        "telefone": "32999995245",
+        "horario": "Quarta-feira: 18h – 22h | Quinta-feira: 18h – 22h | Sexta-feira: 18h – 22h | Sábado: 12h – 23h | Domingo: 12h – 17h"
+    },
+    {
+        "nome": "Dirceu’s Pub",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115604/dirceu_spub_canapemineiro_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/dirceus-pub/",
+        "endereco": "R. Dom Viçoso, 190 | Alto dos Passos, Juiz de Fora – MG",
+        "prato": "Canapé mineiro",
+        "descricao_prato": "Canapé de polenta com ragu de linguiça, couve frita e finalizada com farofa de bacon.",
+        "telefone": "3233215283",
+        "horario": "Terça-feira: 17h – 0h30 | Quarta-feira: 17h – 0h30 | Quinta-feira: 17h – 0h30 | Sexta-feira: 17h – 0h30 | Sábado: 12h – 0h30 | Domingo: 12h – 15h"
+    },
+    {
+        "nome": "Don Juan Gastronomia e Eventos",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115606/donjuangastronomiaeeventos_panquecadecouve_juizdefora_2026_gutah_1.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/don-juan-gastronomia-e-eventos/",
+        "endereco": "R. Eloy Américo Mendes, 195 | Aeroporto, Juiz de Fora – MG",
+        "prato": "Panqueca de couve",
+        "descricao_prato": "recheada com filezinho suíno e requeijão tipo catupiry, acompanhada com polenta. Decorada com molho de tomate ao sugo, parmesão e crispy de talo de couve com alho.",
+        "telefone": "32987034549",
+        "horario": "Quarta-feira: 18h – 23h | Quinta-feira: 18h – 23h | Sexta-feira: 18h – 23h | Sábado: 11h – 23h"
+    },
+    {
+        "nome": "Empório do Sabor",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115608/emporiodosabor_herancadointerior_juizdefora_2026_gutah_1.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/3717-revision-v1/",
+        "endereco": "R. Henrique de Novais, 166 | Lourdes, Juiz de Fora – MG",
+        "prato": "Herança do interior",
+        "descricao_prato": "Carne de panela, acompanhada de creme de macaxeira e farofa crocante com bacon e couve.",
+        "telefone": "3299147004",
+        "horario": "Terça-feira: 18h – 23h | Quarta-feira: 18h – 23h | Quinta-feira: 18h – 23h | Sexta-feira: 18h – 23h | Sábado: 14h – 23h"
+    },
+    {
+        "nome": "Espetinho da Villa",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115609/espetinhodavilla_drumetdavilla_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/espetinho-da-villa/",
+        "endereco": "R. Moraes e Castro, 447 | Altos dos Passos, Juiz de Fora – MG",
+        "prato": "Drumet da Villa",
+        "descricao_prato": "Coxinha da asa recheada com queijo minas, espinafre e alho-poró, servida com molho de alho-poró e redução de laranja na cachaça com pimenta-biquinho.",
+        "telefone": "32984790145",
+        "horario": "Quarta-feira: 17h – 0h | Quinta-feira: 17h – 0h | Sexta-feira: 17h – 0h | Sábado: 12h – 0h | Domingo: 11h – 22h | Terça-feira: 17h – 0h"
+    },
+    {
+        "nome": "Ibitibar",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115611/ibitibar_surpresamineira_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/ibitibar/",
+        "endereco": "R. Ibitiguaia, 462 | Santa Luzia, Juiz de Fora – MG",
+        "prato": "Ronc Ronc di Minas",
+        "descricao_prato": "Trouxinha de copa lombo, recheada com queijo meia cura e rúcula, empanada, envolvida no bacon. Acompanhada de molho de melaço de rapadura e especiarias, flambado na cachaça.",
+        "telefone": "32988061329",
+        "horario": "Quarta- feira 18:30 as 23:00   Quinta das 18:30 as 23:00\nSexta e 18:30 a 00:00\nSabado das 17:00 as 0:00\nDomingo das 17:00 as 23:00"
+    },
+    {
+        "nome": "Informal Bar e Restaurante",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115713/informalbarerestaurante_popayemineiro_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/informal-bar-e-restaurante/",
+        "endereco": "Rua da Abolição, 54 | Jardim Glória, Juiz de Fora – MG",
+        "prato": "Popaye mineiro",
+        "descricao_prato": "Polpetone recheado com espinafre e ricota, acompanhado de molho de espinafre. Clássico italiano, preparado com carnes selecionadas, recheado com espinafre e queijo cremoso de ricota, finalizado com delicado molho de espinafre.",
+        "telefone": "3233214032",
+        "horario": "Terça-feira: 17h – 22h | Quarta-feira: 17h – 22h | Quinta-feira: 17h – 22h | Sexta-feira: 17h – 22h | Sábado: 12h – 22h | Domingo: 12h – 18h"
+    },
+    {
+        "nome": "Lero Lero Bar",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115715/lerolerobar_trindademineira_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/lero-lero-bar/",
+        "endereco": "Av. Barão do Rio Branco, 280 | Manoel Honório, Juiz de Fora – MG",
+        "prato": "Trindade mineira",
+        "descricao_prato": "Alcatra ao molho de queijo com alho-poró, servida com batatas e goiabada, combinação inspirada na culinária mineira que une salgado e doce.",
+        "telefone": "32 999173042",
+        "horario": "Terça-feira: 16h – 0h | Quarta-feira: 16h – 0h | Quinta-feira: 16h – 0h | Sexta-feira: 16h – 0h | Sábado: 11h – 01h | Domingo: 16h – 01h"
+    },
+    {
+        "nome": "Nosso Bar JF",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115716/nossobarjf_casalraiz_juizdefora_2026_gutah_1.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/nosso-bar-jf/",
+        "endereco": "R. Tomé de Souza, 92 | Benfica, Juiz de Fora – MG",
+        "prato": "Casal raiz",
+        "descricao_prato": "Linguiça artesanal de fraldinha ao molho suculento de repolho e especiarias à moda da casa, acompanhado de mandioca na manteiga e queijo coalho.",
+        "telefone": "32991934380",
+        "horario": "Segunda-feira: 17h – 23h | Terça-feira: 11h – 23h | Quarta-feira: 11h – 23h | Quinta-feira: 11h – 23h | Sexta-feira: 11h – 23h | Sábado: 11h – 23h | Domingo: 11h – 23h"
+    },
+    {
+        "nome": "Pão Moiado",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115718/paomoiado_beijudelingua_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/pao-moiado/",
+        "endereco": "R. José Nunes Leal, 45 | Santa Luzia, Juiz de Fora – MG",
+        "prato": "Beiju de Língua",
+        "descricao_prato": "Língua cozida com agrião, acompanhada de beiju de tapioca e salsa de agrião picante.",
+        "telefone": "32988676967",
+        "horario": "Quarta-feira: 18h – 22h30 | Quinta-feira: 18h – 22h30 | Sexta-feira: 18h – 22h30 | Sábado: 18h – 22h30"
+    },
+    {
+        "nome": "Pappadog Bar",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115720/pappadogbar_pappopeye_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/pappadog-bar/",
+        "endereco": "R. Barão de Santa Helena, 165 | Granbery, Juiz de Fora – MG",
+        "prato": "Pappopeye",
+        "descricao_prato": "O petisco apresenta picanha de cozimento lento com molho americano em uma cesta crocante feita de massa de pastel e coberto por camada de queijo emmental. A criação é finalizada com um pesto de espinafre fresco sob o crocante da cebola crisp.",
+        "telefone": "3298716588",
+        "horario": "Segunda-feira: 18h – 23h | Terça-feira: 18h – 23h | Quarta-feira: 18h – 23h | Quinta-feira: 18h – 23h | Sexta-feira: 18h – 0h | Sábado: 18h – 0h | Domingo: 18h – 23h"
+    },
+    {
+        "nome": "Petisqueira",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115822/petisqueira_paixaodebuteco_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/petisqueira/",
+        "endereco": "Av. Eugênio do Nascimento, 475 | Aeroporto, Juiz de Fora – MG",
+        "prato": "Paixão de Buteco",
+        "descricao_prato": "Costela de boi cozida, com mandioca na manteiga de garrafa, tomates assados, com rúcula.",
+        "telefone": "3230291819",
+        "horario": "Quarta-feira: 17h – 23h | Quinta-feira: 17h – 23h | Sexta-feira: 17h – 23h | Sábado: 10h – 22h | Domingo: 10h – 18h"
+    },
+    {
+        "nome": "Recanto dos Manacás",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115824/recantodosmanacas_deujogo_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/recanto-dos-manacas/",
+        "endereco": "R. Oswaldo Gouvea, 941 | Santo Antônio, Juiz de Fora – MG",
+        "prato": "Deu Jogo",
+        "descricao_prato": "Dadinhos de costela bovina prensada empanados na farinha panko, acompanhado de caramelo de rúcula.",
+        "telefone": "3232350920",
+        "horario": "Quarta-feira: 18h – 23h | Quinta-feira: 18h – 23h | Sexta-feira: 18h – 23h | Sábado: 11h – 23h | Domingo: 11h – 17h"
+    },
+    {
+        "nome": "Reza Forte",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115826/rezaforte_zedascouve_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/reza-forte/",
+        "endereco": "R. Dr. João Pinheiro, 356 | Jardim Glória, Juiz de Fora – MG",
+        "prato": "Zé das Couve",
+        "descricao_prato": "Pão chinês de couve-manteiga, cozido no vapor, recheado com cupim ao shoyu e melado, vinagrete de talo de couve, maionese da casa e couve crocante.",
+        "telefone": "32991741012",
+        "horario": "Terça-feira: 18h – 23h30 | Quarta-feira: 18h – 23h30 | Quinta-feira: 18h – 23h30 | Sexta-feira: 18h – 23h30 | Sábado: 18h – 23h30"
+    },
+    {
+        "nome": "Super Lazin",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115828/superlazin_boisupremo_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/super-lazin/",
+        "endereco": "Av. Sete de Setembro, 1167 | Centro, Juiz de Fora – MG",
+        "prato": "Boi Supremo",
+        "descricao_prato": "Isca de miolo da alcatra com catupiry, alho-poró flambado com muçarela.",
+        "telefone": "32999256546",
+        "horario": "Terça-feira: 18h – 23:15 | Quarta-feira: 18h – 23:15 | Quinta-feira: 18h – 23:15 | Sexta-feira: 18h – 23h30 | Sábado: 18h – 23h30 | Domingo: 18h – 23h"
+    },
+    {
+        "nome": "Varanda Restô Beer",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115829/varandarestobeer_dedimdiprosa-doissabores_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/varanda-resto-beer/",
+        "endereco": "Rua Barão de Santa Helena, 596 | Granbery, Juiz de Fora – MG",
+        "prato": "DEDIM DI PROSA – DOIS SABORES",
+        "descricao_prato": "Cestinha com recheio de couve-flor e alho-poró, nos dois sabores que ninguém resiste: peito de peru e carne seca suína.suína.",
+        "telefone": "3233210786",
+        "horario": "Terça-feira: 17h30 – 22h30 | Quarta-feira: 17h30 – 22h30 | Quinta-feira: 17h30 – 22h30 | Sexta-feira: 17h30 – 23h | Sábado: 17h30 – 23h | Domingo: 17h30 – 22h30"
+    },
+    {
+        "nome": "Zaka’s Gastro Beer",
+        "imagem": "https://cdb-static-files.s3.amazonaws.com/wp-content/uploads/2026/03/09115931/zaka_sgastrobeer_chiqueirinhoarrumado_juizdefora_2026_gutah.jpg",
+        "link_detalhes": "https://comidadibuteco.com.br/buteco/zakas-gastro-beer/",
+        "endereco": "Rua Tenente Paulo Maria Delage, 292 | Borboleta, Juiz de Fora – MG",
+        "prato": "Chiqueirinho arrumado",
+        "descricao_prato": "Bolinho de picanha suína defumada (sem massa), recheado de queijo, azeitona e alho-poró. Acompanha molho especial da casa.",
+        "telefone": "32987007071",
+        "horario": "Terça-feira: 18h – 0h | Quarta-feira: 18h – 0h | Quinta-feira: 18h – 0h | Sexta-feira: 18h – 0h | Sábado: 12h – 0h | Domingo: 12h – 22h"
+    }
+]
