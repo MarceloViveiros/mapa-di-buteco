@@ -93,7 +93,13 @@ header {
 }
 
 /* --- ESTILOS DO NOSSO BALÃO (POPUP) --- */
-.leaflet-popup-content { width: 280px !important; margin: 15px; }
+/* --- ESTILOS DO NOSSO BALÃO (POPUP) --- */
+.leaflet-popup-content { 
+    width: 280px !important; 
+    max-height: 60vh; /* Limita o balão a 60% da altura da tela */
+    overflow-y: auto; /* Cria uma rolagem suave apenas dentro do balão */
+    margin: 15px; 
+}
 .popup-img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
 .popup-title { margin: 0; font-size: 18px; color: #d35400; font-weight: 800; }
 .popup-address { margin: 5px 0 10px 0; font-size: 11px; color: #7f8c8d; }
