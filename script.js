@@ -12,7 +12,9 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // 2. Consome o arquivo JSON
-fetch('bares_finais.json')
+const versaoApp = new Date().getTime();
+
+fetch(`bares_finais.json?v=${versaoApp}`)
     .then(response => response.json())
     .then(bares => {
         bares.forEach(bar => {
@@ -121,7 +123,7 @@ function installApp() {
             deferredPrompt = null;
         });
     } else {
-        alert("Para instalar: \n\nNo Android (Chrome): Clique nos 3 pontinhos > Instalar Aplicativo. \n\nNo iPhone (Safari): Clique em Compartilhar > Adicionar à Tela de Início.");
+        alert("Para instalar: \n\nNo Android (Chrome): Clique nos 3 pontinhos > Adicionar a Tela Inicial. \n\nNo iPhone (Safari): Clique em Compartilhar > Adicionar à Tela de Início.");
     }
     toggleMenu();
 }
