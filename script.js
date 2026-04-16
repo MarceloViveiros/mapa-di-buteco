@@ -70,7 +70,7 @@ fetch(`bares_finais.json?v=${versaoApp}`)
                             </div>
                             
                             <textarea id="texto-${idLimpo}" class="input-comentario" placeholder="Deixe seu comentário..." rows="2"></textarea>
-                            <button class="btn-avaliar" onclick="enviarAvaliacao('${bar.nome}', '${idLimpo}')">Salvar Avaliação</button>
+                            <button class="btn-avaliar" onclick="enviarAvaliacao('${bar.nome}', '${idLimpo}', ${bar.lat}, ${bar.lon})">Salvar Avaliação</button>
 
                             <div class="area-botoes">
                                 <a href="${linkGoogleMaps}" target="_blank" class="btn btn-google">🗺️ Google Maps</a>
@@ -184,8 +184,8 @@ window.marcarEstrela = function(idLimpo, nota) {
     }
 }
 
-// 2. Função POST: Manda a nota nova pro seu Servidor Python
-window.enviarAvaliacao = function(nomeDoBar, idLimpo) {
+// 2. Função POST: Manda a nota nova pro seu Servidor Python (Com Trava de GPS)
+window.enviarAvaliacao = function(nomeDoBar, idLimpo, barLat, barLon) {
     const nota = window.notaSelecionada[idLimpo];
     const comentario = document.getElementById(`texto-${idLimpo}`).value;
 
@@ -194,25 +194,70 @@ window.enviarAvaliacao = function(nomeDoBar, idLimpo) {
         return;
     }
 
-    // Fazendo a requisição POST para o nosso FastAPI
-    fetch("https://api-mapa-buteco.onrender.com/avaliar", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
+    // --- INÍCIO DA TRAVA DE GEOFENCING ---
+    if (!navigator.geolocation) {
+        alert("Seu navegador ou celular não suporta a leitura de GPS.");
+        return;
+    }
+
+    // Muda o texto do botão para dar um feedback visual
+    const btnSalvar = document.querySelector(`#estrelas-${idLimpo}`).nextElementSibling.nextElementSibling;
+    const textoOriginal = btnSalvar.innerText;
+    btnSalvar.innerText = "Verificando GPS...";
+    btnSalvar.disabled = true;
+
+    // Pede a localização atualizada do usuário
+    navigator.geolocation.getCurrentPosition(
+        (posicao) => {
+            const userLat = posicao.coords.latitude;
+            const userLon = posicao.coords.longitude;
+
+            // O superpoder do Leaflet: calcula a distância em METROS
+            const pontoUsuario = L.latLng(userLat, userLon);
+            const pontoBar = L.latLng(barLat, barLon);
+            const distanciaMetros = pontoUsuario.distanceTo(pontoBar);
+
+            // A Regra de Negócio: Distância máxima tolerada (ex: 100 metros)
+            const DISTANCIA_MAXIMA = 100; 
+
+            if (distanciaMetros > DISTANCIA_MAXIMA) {
+                alert(`Trava de Segurança: Você está a ${Math.round(distanciaMetros)} metros de distância. Vá até o buteco para avaliar! 🍻`);
+                btnSalvar.innerText = textoOriginal;
+                btnSalvar.disabled = false;
+                return; // O return vazio mata a função aqui. A API não é chamada!
+            }
+
+            // --- SE PASSOU NA TRAVA, FAZ O FETCH PRO RENDER NORMALMENTE ---
+            btnSalvar.innerText = "Salvando...";
+
+            fetch("https://api-mapa-buteco.onrender.com/avaliar", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ nome_bar: nomeDoBar, nota: nota, comentario: comentario })
+            })
+            .then(resposta => resposta.json())
+            .then(dados => {
+                alert(dados.mensagem); 
+                document.getElementById(`texto-${idLimpo}`).value = ""; 
+                buscarAvaliacoes(nomeDoBar, idLimpo); 
+            })
+            .catch(erro => {
+                console.error("Erro ao enviar:", erro);
+                alert("Erro ao conectar com o servidor.");
+            })
+            .finally(() => {
+                // Restaura o botão
+                btnSalvar.innerText = textoOriginal;
+                btnSalvar.disabled = false;
+            });
         },
-        body: JSON.stringify({
-            nome_bar: nomeDoBar,
-            nota: nota,
-            comentario: comentario
-        })
-    })
-    .then(resposta => resposta.json())
-    .then(dados => {
-        alert(dados.mensagem); // "Avaliação salva com sucesso!"
-        document.getElementById(`texto-${idLimpo}`).value = ""; // Limpa a caixinha
-        buscarAvaliacoes(nomeDoBar, idLimpo); // Recarrega os comentários para aparecer o seu!
-    })
-    .catch(erro => console.error("Erro ao enviar:", erro));
+        (erro) => {
+            alert("Você precisa permitir o acesso à localização para poder avaliar!");
+            btnSalvar.innerText = textoOriginal;
+            btnSalvar.disabled = false;
+        },
+        { enableHighAccuracy: true, timeout: 10000 } // Pede precisão alta do GPS
+    );
 }
 
 // 3. Função GET: Busca a média e os comentários no Servidor Python
