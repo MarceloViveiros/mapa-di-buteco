@@ -183,7 +183,7 @@ window.enviarAvaliacao = function(nomeDoBar, idLimpo) {
     }
 
     // Fazendo a requisição POST para o nosso FastAPI
-    fetch("http://127.0.0.1:8000/avaliar", {
+    fetch("https://api-mapa-buteco.onrender.com/avaliar", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -205,7 +205,7 @@ window.enviarAvaliacao = function(nomeDoBar, idLimpo) {
 
 // 3. Função GET: Busca a média e os comentários no Servidor Python
 window.buscarAvaliacoes = function(nomeDoBar, idLimpo) {
-    fetch(`http://127.0.0.1:8000/avaliacoes/${nomeDoBar}`)
+    fetch(`https://api-mapa-buteco.onrender.com/avaliacoes/${nomeDoBar}`)
     .then(resposta => resposta.json())
     .then(dados => {
         // Atualiza a média
