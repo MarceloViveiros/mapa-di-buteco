@@ -29,26 +29,30 @@ fetch(`bares_finais.json?v=${versaoApp}`)
                 const linkGoogleMaps = `https://www.google.com/maps/dir/?api=1&destination=${buscaExata}`;
                 const linkUber = `https://m.uber.com/ul/?action=setPickup&pickup=my_location&dropoff[formatted_address]=${buscaExata}&dropoff[nickname]=${encodeURIComponent(bar.nome)}`;
 
-                // Para não dar erro com espaços nos IDs do HTML, tiramos os espaços do nome do bar
+                // Para não dar erro com espaços nos IDs do HTML
                 const idLimpo = bar.nome.replace(/\s+/g, '');
 
                 const balao = `
-                    <div>
-                        <img src="${bar.imagem}" alt="${bar.nome}" class="popup-img">
-                        <h3 class="popup-title">${bar.nome}</h3>
-                        <p class="popup-address">📍 ${bar.endereco}</p>
-                        
-                        <div class="box-prato">
-                            <p class="nome-prato">🍽️ ${bar.prato}</p>
-                            <p class="desc-prato">${bar.descricao_prato}</p>
+                    <div class="balao-container">
+                        <div class="popup-header-scroll">
+                            <img src="${bar.imagem}" alt="${bar.nome}" class="popup-img">
+                            <h3 class="popup-title">${bar.nome}</h3>
+                            <p class="popup-address">📍 ${bar.endereco}</p>
+                            
+                            <div class="box-prato">
+                                <p class="nome-prato">🍽️ ${bar.prato}</p>
+                                <p class="desc-prato">${bar.descricao_prato}</p>
+                            </div>
+
+                            <div class="box-avaliacao">
+                                <h4>Avaliações (Média: <span id="media-${idLimpo}">-</span>⭐)</h4>
+                                <div id="lista-${idLimpo}" class="lista-comentarios">
+                                    <i>Carregando...</i>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="box-avaliacao">
-                            <h4>Avaliações (Média: <span id="media-${idLimpo}">-</span>⭐)</h4>
-                            <div id="lista-${idLimpo}" class="lista-comentarios">
-                                <i>Carregando...</i>
-                            </div>
-                            
+                        <div class="popup-footer-fixo">
                             <div class="estrelas-container" id="estrelas-${idLimpo}">
                                 <span class="estrela" onclick="marcarEstrela('${idLimpo}', 1)">★</span>
                                 <span class="estrela" onclick="marcarEstrela('${idLimpo}', 2)">★</span>
@@ -57,13 +61,13 @@ fetch(`bares_finais.json?v=${versaoApp}`)
                                 <span class="estrela" onclick="marcarEstrela('${idLimpo}', 5)">★</span>
                             </div>
                             
-                            <textarea id="texto-${idLimpo}" class="input-comentario" placeholder="Deixe seu comentário..."></textarea>
+                            <textarea id="texto-${idLimpo}" class="input-comentario" placeholder="Deixe seu comentário..." rows="2"></textarea>
                             <button class="btn-avaliar" onclick="enviarAvaliacao('${bar.nome}', '${idLimpo}')">Salvar Avaliação</button>
-                        </div>
 
-                        <div class="area-botoes">
-                            <a href="${linkGoogleMaps}" target="_blank" class="btn btn-google">🗺️ Google Maps</a>
-                            <a href="${linkUber}" target="_blank" class="btn btn-uber">🚗 Chamar Uber</a>
+                            <div class="area-botoes">
+                                <a href="${linkGoogleMaps}" target="_blank" class="btn btn-google">🗺️ Google Maps</a>
+                                <a href="${linkUber}" target="_blank" class="btn btn-uber">🚗 Chamar Uber</a>
+                            </div>
                         </div>
                     </div>
                 `;
