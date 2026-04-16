@@ -184,8 +184,7 @@ window.marcarEstrela = function(idLimpo, nota) {
     }
 }
 
-// 2. Função POST: Manda a nota nova pro seu Servidor Python (Com Trava de GPS Blindada)
-window.enviarAvaliacao = function(nomeDoBar, idLimpo, barLat, barLon) {
+window.enviarAvaliacao = function(nomeDoBar, idLimpo) {
     const nota = window.notaSelecionada[idLimpo];
     const comentario = document.getElementById(`texto-${idLimpo}`).value;
 
@@ -194,96 +193,33 @@ window.enviarAvaliacao = function(nomeDoBar, idLimpo, barLat, barLon) {
         return;
     }
 
-    if (!navigator.geolocation) {
-        alert("Seu navegador ou celular não suporta a leitura de GPS.");
-        return;
-    }
-
+    // Pega o botão para mudar o texto e desativar temporariamente
     const btnSalvar = document.querySelector(`#estrelas-${idLimpo}`).nextElementSibling.nextElementSibling;
     const textoOriginal = btnSalvar.innerText;
-    btnSalvar.innerText = "Buscando satélites...";
+    btnSalvar.innerText = "Salvando...";
     btnSalvar.disabled = true;
 
-    // --- ⏱️ O PULO DO GATO: Nosso cronômetro manual (12 segundos) ---
-    let gpsRespondido = false;
-    const tempoLimiteManual = setTimeout(() => {
-        if (!gpsRespondido) {
-            alert("O GPS do celular travou ou o sinal está muito fraco. Vá para um local aberto (rua/janela) e tente novamente.");
-            btnSalvar.innerText = textoOriginal;
-            btnSalvar.disabled = false;
-        }
-    }, 12000); // 12 segundos
-
-    navigator.geolocation.getCurrentPosition(
-        (posicao) => {
-            gpsRespondido = true; // Avisa que deu certo
-            clearTimeout(tempoLimiteManual); // Desliga a nossa bomba-relógio
-
-            const userLat = posicao.coords.latitude;
-            const userLon = posicao.coords.longitude;
-
-            // O superpoder do Leaflet: calcula a distância em METROS
-            const pontoUsuario = L.latLng(userLat, userLon);
-            const pontoBar = L.latLng(barLat, barLon);
-            const distanciaMetros = pontoUsuario.distanceTo(pontoBar);
-
-            // A Regra de Negócio: Distância máxima tolerada (ex: 100 metros)
-            const DISTANCIA_MAXIMA = 100; 
-
-            if (distanciaMetros > DISTANCIA_MAXIMA) {
-                alert(`Trava de Segurança: Você está a ${Math.round(distanciaMetros)} metros de distância. Vá até o buteco para avaliar! 🍻`);
-                btnSalvar.innerText = textoOriginal;
-                btnSalvar.disabled = false;
-                return; // O return vazio mata a função aqui. A API não é chamada!
-            }
-
-            // --- SE PASSOU NA TRAVA, FAZ O FETCH PRO RENDER NORMALMENTE ---
-            btnSalvar.innerText = "Salvando...";
-
-            fetch("https://api-mapa-buteco.onrender.com/avaliar", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ nome_bar: nomeDoBar, nota: nota, comentario: comentario })
-            })
-            .then(resposta => resposta.json())
-            .then(dados => {
-                alert(dados.mensagem); 
-                document.getElementById(`texto-${idLimpo}`).value = ""; 
-                buscarAvaliacoes(nomeDoBar, idLimpo); 
-            })
-            .catch(erro => {
-                console.error("Erro ao enviar:", erro);
-                alert("Erro ao conectar com o servidor.");
-            })
-            .finally(() => {
-                // Restaura o botão
-                btnSalvar.innerText = textoOriginal;
-                btnSalvar.disabled = false;
-            });
-        },
-        // --- SE O GPS NATIVO FALHAR ---
-        (erro) => {
-            gpsRespondido = true; // Avisa que deu erro nativo
-            clearTimeout(tempoLimiteManual); // Desliga a bomba-relógio
-
-            btnSalvar.innerText = textoOriginal;
-            btnSalvar.disabled = false;
-
-            switch(erro.code) {
-                case erro.PERMISSION_DENIED:
-                    alert("Acesso negado! Você precisa autorizar o acesso à localização no navegador para poder avaliar.");
-                    break;
-                case erro.POSITION_UNAVAILABLE:
-                    alert("Sinal de GPS indisponível no momento.");
-                    break;
-                case erro.TIMEOUT:
-                    alert("O GPS demorou muito para responder (Timeout Nativo).");
-                    break;
-            }
-        },
-        // Parâmetros de alta precisão
-        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 } 
-    );
+    // Faz o envio direto para a API na nuvem
+    fetch("https://api-mapa-buteco.onrender.com/avaliar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nome_bar: nomeDoBar, nota: nota, comentario: comentario })
+    })
+    .then(resposta => resposta.json())
+    .then(dados => {
+        alert(dados.mensagem); 
+        document.getElementById(`texto-${idLimpo}`).value = ""; // Limpa a caixa de texto
+        buscarAvaliacoes(nomeDoBar, idLimpo); // Atualiza a lista de comentários
+    })
+    .catch(erro => {
+        console.error("Erro ao enviar:", erro);
+        alert("Erro ao conectar com o servidor.");
+    })
+    .finally(() => {
+        // Restaura o botão
+        btnSalvar.innerText = textoOriginal;
+        btnSalvar.disabled = false;
+    });
 }
 
 // 3. Função GET: Busca a média e os comentários no Servidor Python
