@@ -183,8 +183,6 @@ window.marcarEstrela = function(idLimpo, nota) {
         }
     }
 }
-
-// 2. Função POST: Manda a nota nova pro seu Servidor Python (Com Trava de GPS)
 window.enviarAvaliacao = function(nomeDoBar, idLimpo, barLat, barLon) {
     const nota = window.notaSelecionada[idLimpo];
     const comentario = document.getElementById(`texto-${idLimpo}`).value;
@@ -194,40 +192,34 @@ window.enviarAvaliacao = function(nomeDoBar, idLimpo, barLat, barLon) {
         return;
     }
 
-    // --- INÍCIO DA TRAVA DE GEOFENCING ---
     if (!navigator.geolocation) {
-        alert("Seu navegador ou celular não suporta a leitura de GPS.");
+        alert("Seu navegador não suporta a leitura de GPS.");
         return;
     }
 
-    // Muda o texto do botão para dar um feedback visual
     const btnSalvar = document.querySelector(`#estrelas-${idLimpo}`).nextElementSibling.nextElementSibling;
     const textoOriginal = btnSalvar.innerText;
-    btnSalvar.innerText = "Verificando GPS...";
+    btnSalvar.innerText = "Verificando GPS (pode levar uns segundos)...";
     btnSalvar.disabled = true;
 
-    // Pede a localização atualizada do usuário
     navigator.geolocation.getCurrentPosition(
         (posicao) => {
             const userLat = posicao.coords.latitude;
             const userLon = posicao.coords.longitude;
 
-            // O superpoder do Leaflet: calcula a distância em METROS
             const pontoUsuario = L.latLng(userLat, userLon);
             const pontoBar = L.latLng(barLat, barLon);
             const distanciaMetros = pontoUsuario.distanceTo(pontoBar);
 
-            // A Regra de Negócio: Distância máxima tolerada (ex: 100 metros)
             const DISTANCIA_MAXIMA = 100; 
 
             if (distanciaMetros > DISTANCIA_MAXIMA) {
                 alert(`Trava de Segurança: Você está a ${Math.round(distanciaMetros)} metros de distância. Vá até o buteco para avaliar! 🍻`);
                 btnSalvar.innerText = textoOriginal;
                 btnSalvar.disabled = false;
-                return; // O return vazio mata a função aqui. A API não é chamada!
+                return; 
             }
 
-            // --- SE PASSOU NA TRAVA, FAZ O FETCH PRO RENDER NORMALMENTE ---
             btnSalvar.innerText = "Salvando...";
 
             fetch("https://api-mapa-buteco.onrender.com/avaliar", {
@@ -246,17 +238,32 @@ window.enviarAvaliacao = function(nomeDoBar, idLimpo, barLat, barLon) {
                 alert("Erro ao conectar com o servidor.");
             })
             .finally(() => {
-                // Restaura o botão
                 btnSalvar.innerText = textoOriginal;
                 btnSalvar.disabled = false;
             });
         },
+        // --- A MÁGICA DA CORREÇÃO ESTÁ AQUI ---
         (erro) => {
-            alert("Você precisa permitir o acesso à localização para poder avaliar!");
             btnSalvar.innerText = textoOriginal;
             btnSalvar.disabled = false;
+
+            switch(erro.code) {
+                case erro.PERMISSION_DENIED:
+                    alert("Acesso negado! Verifique se a localização está ativada no navegador E no Windows/Celular.");
+                    break;
+                case erro.POSITION_UNAVAILABLE:
+                    alert("Sinal de GPS indisponível. Seu aparelho não conseguiu triangular sua posição.");
+                    break;
+                case erro.TIMEOUT:
+                    alert("O GPS demorou muito para responder. Vá para um local aberto (rua/janela) e tente novamente.");
+                    break;
+                default:
+                    alert("Erro desconhecido ao tentar ler o GPS.");
+                    break;
+            }
         },
-        { enableHighAccuracy: true, timeout: 10000 } // Pede precisão alta do GPS
+        // Adicionamos um Timeout de 10 segundos. Se o celular não achar o satélite, ele para de tentar e não trava!
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 } 
     );
 }
 
