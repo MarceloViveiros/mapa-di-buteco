@@ -68,21 +68,38 @@ def salvar_avaliacao(dados: Avaliacao):
 
 @app.get("/avaliacoes/{nome_bar}")
 def ler_avaliacoes(nome_bar: str):
-    conexao = psycopg2.connect(URL_BANCO)
-    cursor = conexao.cursor()
-    cursor.execute("SELECT nota, comentario FROM avaliacoes WHERE nome_bar = %s", (nome_bar,))
-    resultados = cursor.fetchall()
-    conexao.close() 
-    
-    if not resultados:
-        return {"media": 0, "total_avaliacoes": 0, "comentarios": []}
-    
-    soma_notas = sum([linha[0] for linha in resultados])
-    media = soma_notas / len(resultados)
-    comentarios = [linha[1] for linha in resultados if linha[1] != ""]
-    
-    return {
-        "media": round(media, 1),
-        "total_avaliacoes": len(resultados),
-        "comentarios": comentarios
-    }
+    conexao = None
+    try:
+        # 1. O Pulo do Gato: .strip() remove qualquer espaço invisível ou quebra de linha da URL
+        db_url = URL_BANCO.strip() if URL_BANCO else ""
+        
+        # 2. Tentamos conectar com a URL limpa
+        conexao = psycopg2.connect(db_url)
+        cursor = conexao.cursor()
+        
+        cursor.execute("SELECT nota, comentario FROM avaliacoes WHERE nome_bar = %s", (nome_bar,))
+        resultados = cursor.fetchall()
+        
+        cursor.close() # Boa prática: fechar o cursor antes da conexão
+        conexao.close() 
+        
+        if not resultados:
+            return {"media": 0, "total_avaliacoes": 0, "comentarios": []}
+        
+        soma_notas = sum([linha[0] for linha in resultados])
+        media = soma_notas / len(resultados)
+        comentarios = [linha[1] for linha in resultados if linha[1] != ""]
+        
+        return {
+            "media": round(media, 1),
+            "total_avaliacoes": len(resultados),
+            "comentarios": comentarios
+        }
+        
+    except Exception as e:
+        # 3. Se der erro de socket, senha ou banco, o app não "explode". 
+        # Ele imprime o erro no log do Render e devolve uma resposta segura pro front-end.
+        print(f"🚨 Erro crítico ao buscar avaliações no Neon: {e}")
+        if conexao:
+            conexao.close()
+        return {"media": 0, "total_avaliacoes": 0, "comentarios": [], "erro_tecnico": str(e)}
