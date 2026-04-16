@@ -11,6 +11,14 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap'
 }).addTo(map);
 
+// Função para acordar a API assim que o site abre
+(function acordarAPI() {
+    console.log("Acordando a API no Render...");
+    fetch("https://api-mapa-buteco.onrender.com/ping")
+        .then(() => console.log("API acordou com sucesso!"))
+        .catch(() => console.log("API ainda está bocejando..."));
+})();
+
 // 2. Consome o arquivo JSON
 const versaoApp = new Date().getTime();
 

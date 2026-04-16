@@ -14,14 +14,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Puxa a variável de ambiente
 URL_BANCO = os.getenv("DATABASE_URL")
 
-# 1. Função blindada com Programação Defensiva
+# --- ROTA DE PING (ADICIONADA AQUI) ---
+@app.get("/ping")
+def ping():
+    return {"status": "viva!", "banco_configurado": URL_BANCO is not None}
+
 def inicializar_banco():
     if not URL_BANCO:
-        print("🚨 ERRO CRÍTICO: Variável DATABASE_URL não foi encontrada pelo sistema!")
-        return # Sai da função antes de tentar conectar e travar o app
+        print("🚨 ERRO CRÍTICO: Variável DATABASE_URL não encontrada!")
+        return 
         
     try:
         conexao = psycopg2.connect(URL_BANCO)
@@ -36,11 +39,10 @@ def inicializar_banco():
         ''')
         conexao.commit()
         conexao.close()
-        print("✅ Banco de dados conectado e inicializado com sucesso!")
+        print("✅ Banco de dados conectado com sucesso!")
     except Exception as e:
         print(f"🚨 Erro ao conectar no banco: {e}")
 
-# Só roda se o arquivo for executado
 inicializar_banco()
 
 class Avaliacao(BaseModel):
@@ -49,29 +51,25 @@ class Avaliacao(BaseModel):
     comentario: str = ""
 
 # =======================================================
-# 🚀 ROTAS DA NOSSA API 
+# 🚀 ROTAS DE AVALIAÇÃO
 # =======================================================
 
 @app.post("/avaliar")
 def salvar_avaliacao(dados: Avaliacao):
     conexao = psycopg2.connect(URL_BANCO)
     cursor = conexao.cursor()
-    
-    # No PostgreSQL usamos %s em vez de ?
     cursor.execute(
         "INSERT INTO avaliacoes (nome_bar, nota, comentario) VALUES (%s, %s, %s)", 
         (dados.nome_bar, dados.nota, dados.comentario)
     )
     conexao.commit()
     conexao.close() 
-    
-    return {"mensagem": "Avaliação salva com sucesso e persistida na nuvem!"}
+    return {"mensagem": "Avaliação salva com sucesso!"}
 
 @app.get("/avaliacoes/{nome_bar}")
 def ler_avaliacoes(nome_bar: str):
     conexao = psycopg2.connect(URL_BANCO)
     cursor = conexao.cursor()
-    
     cursor.execute("SELECT nota, comentario FROM avaliacoes WHERE nome_bar = %s", (nome_bar,))
     resultados = cursor.fetchall()
     conexao.close() 
