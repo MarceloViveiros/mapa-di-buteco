@@ -2,7 +2,7 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-import psycopg2 # Nossa nova ponte para o Postgres
+import psycopg2
 
 app = FastAPI(title="API Mapa di Buteco")
 
@@ -14,29 +14,33 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Puxa a variável de ambiente
 URL_BANCO = os.getenv("DATABASE_URL")
 
-@app.get("/")
-def home():
-    if not URL_BANCO:
-        return {"erro": "A variável DATABASE_URL não foi configurada no servidor!"}
-    return {"status": "API Online"}
-
-# 1. Função isolada para criar a tabela na nuvem
+# 1. Função blindada com Programação Defensiva
 def inicializar_banco():
-    conexao = psycopg2.connect(URL_BANCO)
-    cursor = conexao.cursor()
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS avaliacoes (
-            id SERIAL PRIMARY KEY,
-            nome_bar TEXT,
-            nota INTEGER,
-            comentario TEXT
-        )
-    ''')
-    conexao.commit()
-    conexao.close()
+    if not URL_BANCO:
+        print("🚨 ERRO CRÍTICO: Variável DATABASE_URL não foi encontrada pelo sistema!")
+        return # Sai da função antes de tentar conectar e travar o app
+        
+    try:
+        conexao = psycopg2.connect(URL_BANCO)
+        cursor = conexao.cursor()
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS avaliacoes (
+                id SERIAL PRIMARY KEY,
+                nome_bar TEXT,
+                nota INTEGER,
+                comentario TEXT
+            )
+        ''')
+        conexao.commit()
+        conexao.close()
+        print("✅ Banco de dados conectado e inicializado com sucesso!")
+    except Exception as e:
+        print(f"🚨 Erro ao conectar no banco: {e}")
 
+# Só roda se o arquivo for executado
 inicializar_banco()
 
 class Avaliacao(BaseModel):
