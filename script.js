@@ -183,6 +183,8 @@ window.marcarEstrela = function(idLimpo, nota) {
         }
     }
 }
+
+// 2. Função POST: Manda a nota nova pro seu Servidor Python (Com Trava de GPS Blindada)
 window.enviarAvaliacao = function(nomeDoBar, idLimpo, barLat, barLon) {
     const nota = window.notaSelecionada[idLimpo];
     const comentario = document.getElementById(`texto-${idLimpo}`).value;
@@ -193,7 +195,7 @@ window.enviarAvaliacao = function(nomeDoBar, idLimpo, barLat, barLon) {
     }
 
     if (!navigator.geolocation) {
-        alert("Seu navegador não suporta a leitura de GPS.");
+        alert("Seu navegador ou celular não suporta a leitura de GPS.");
         return;
     }
 
@@ -202,7 +204,7 @@ window.enviarAvaliacao = function(nomeDoBar, idLimpo, barLat, barLon) {
     btnSalvar.innerText = "Buscando satélites...";
     btnSalvar.disabled = true;
 
-    // ⏱️ A MÁGICA: Nosso cronômetro manual (12 segundos)
+    // --- ⏱️ O PULO DO GATO: Nosso cronômetro manual (12 segundos) ---
     let gpsRespondido = false;
     const tempoLimiteManual = setTimeout(() => {
         if (!gpsRespondido) {
@@ -210,7 +212,7 @@ window.enviarAvaliacao = function(nomeDoBar, idLimpo, barLat, barLon) {
             btnSalvar.innerText = textoOriginal;
             btnSalvar.disabled = false;
         }
-    }, 12000); 
+    }, 12000); // 12 segundos
 
     navigator.geolocation.getCurrentPosition(
         (posicao) => {
@@ -219,19 +221,23 @@ window.enviarAvaliacao = function(nomeDoBar, idLimpo, barLat, barLon) {
 
             const userLat = posicao.coords.latitude;
             const userLon = posicao.coords.longitude;
+
+            // O superpoder do Leaflet: calcula a distância em METROS
             const pontoUsuario = L.latLng(userLat, userLon);
             const pontoBar = L.latLng(barLat, barLon);
             const distanciaMetros = pontoUsuario.distanceTo(pontoBar);
 
+            // A Regra de Negócio: Distância máxima tolerada (ex: 100 metros)
             const DISTANCIA_MAXIMA = 100; 
 
             if (distanciaMetros > DISTANCIA_MAXIMA) {
                 alert(`Trava de Segurança: Você está a ${Math.round(distanciaMetros)} metros de distância. Vá até o buteco para avaliar! 🍻`);
                 btnSalvar.innerText = textoOriginal;
                 btnSalvar.disabled = false;
-                return; 
+                return; // O return vazio mata a função aqui. A API não é chamada!
             }
 
+            // --- SE PASSOU NA TRAVA, FAZ O FETCH PRO RENDER NORMALMENTE ---
             btnSalvar.innerText = "Salvando...";
 
             fetch("https://api-mapa-buteco.onrender.com/avaliar", {
@@ -250,10 +256,12 @@ window.enviarAvaliacao = function(nomeDoBar, idLimpo, barLat, barLon) {
                 alert("Erro ao conectar com o servidor.");
             })
             .finally(() => {
+                // Restaura o botão
                 btnSalvar.innerText = textoOriginal;
                 btnSalvar.disabled = false;
             });
         },
+        // --- SE O GPS NATIVO FALHAR ---
         (erro) => {
             gpsRespondido = true; // Avisa que deu erro nativo
             clearTimeout(tempoLimiteManual); // Desliga a bomba-relógio
@@ -263,7 +271,7 @@ window.enviarAvaliacao = function(nomeDoBar, idLimpo, barLat, barLon) {
 
             switch(erro.code) {
                 case erro.PERMISSION_DENIED:
-                    alert("Acesso negado! Autorize o GPS no navegador.");
+                    alert("Acesso negado! Você precisa autorizar o acesso à localização no navegador para poder avaliar.");
                     break;
                 case erro.POSITION_UNAVAILABLE:
                     alert("Sinal de GPS indisponível no momento.");
@@ -273,8 +281,7 @@ window.enviarAvaliacao = function(nomeDoBar, idLimpo, barLat, barLon) {
                     break;
             }
         },
-        // DICA EXTRA: Para testes, você pode trocar o true para false abaixo.
-        // False usa a antena do Wi-Fi/4G e é quase instantâneo, mas menos preciso (pode errar uns 50m).
+        // Parâmetros de alta precisão
         { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 } 
     );
 }
