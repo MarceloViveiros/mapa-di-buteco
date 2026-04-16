@@ -1,4 +1,5 @@
 🍻 Mapa di Buteco - Juiz de Fora
+
 Este projeto é uma aplicação Full-Stack desenvolvida para mapear e avaliar os melhores bares de Juiz de Fora/MG. A aplicação permite visualizar bares num mapa interativo, consultar avaliações reais e registar novas experiências diretamente no banco de dados.
 
 O projeto faz parte da minha jornada de transição de carreira para a tecnologia e do meu canal Eu Dev!, onde documento o processo de aprendizagem e superação de desafios técnicos reais.
