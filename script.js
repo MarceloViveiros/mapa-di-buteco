@@ -199,14 +199,26 @@ window.enviarAvaliacao = function(nomeDoBar, idLimpo, barLat, barLon) {
 
     const btnSalvar = document.querySelector(`#estrelas-${idLimpo}`).nextElementSibling.nextElementSibling;
     const textoOriginal = btnSalvar.innerText;
-    btnSalvar.innerText = "Verificando GPS (pode levar uns segundos)...";
+    btnSalvar.innerText = "Buscando satélites...";
     btnSalvar.disabled = true;
+
+    // ⏱️ A MÁGICA: Nosso cronômetro manual (12 segundos)
+    let gpsRespondido = false;
+    const tempoLimiteManual = setTimeout(() => {
+        if (!gpsRespondido) {
+            alert("O GPS do celular travou ou o sinal está muito fraco. Vá para um local aberto (rua/janela) e tente novamente.");
+            btnSalvar.innerText = textoOriginal;
+            btnSalvar.disabled = false;
+        }
+    }, 12000); 
 
     navigator.geolocation.getCurrentPosition(
         (posicao) => {
+            gpsRespondido = true; // Avisa que deu certo
+            clearTimeout(tempoLimiteManual); // Desliga a nossa bomba-relógio
+
             const userLat = posicao.coords.latitude;
             const userLon = posicao.coords.longitude;
-
             const pontoUsuario = L.latLng(userLat, userLon);
             const pontoBar = L.latLng(barLat, barLon);
             const distanciaMetros = pontoUsuario.distanceTo(pontoBar);
@@ -242,27 +254,27 @@ window.enviarAvaliacao = function(nomeDoBar, idLimpo, barLat, barLon) {
                 btnSalvar.disabled = false;
             });
         },
-        // --- A MÁGICA DA CORREÇÃO ESTÁ AQUI ---
         (erro) => {
+            gpsRespondido = true; // Avisa que deu erro nativo
+            clearTimeout(tempoLimiteManual); // Desliga a bomba-relógio
+
             btnSalvar.innerText = textoOriginal;
             btnSalvar.disabled = false;
 
             switch(erro.code) {
                 case erro.PERMISSION_DENIED:
-                    alert("Acesso negado! Verifique se a localização está ativada no navegador E no Windows/Celular.");
+                    alert("Acesso negado! Autorize o GPS no navegador.");
                     break;
                 case erro.POSITION_UNAVAILABLE:
-                    alert("Sinal de GPS indisponível. Seu aparelho não conseguiu triangular sua posição.");
+                    alert("Sinal de GPS indisponível no momento.");
                     break;
                 case erro.TIMEOUT:
-                    alert("O GPS demorou muito para responder. Vá para um local aberto (rua/janela) e tente novamente.");
-                    break;
-                default:
-                    alert("Erro desconhecido ao tentar ler o GPS.");
+                    alert("O GPS demorou muito para responder (Timeout Nativo).");
                     break;
             }
         },
-        // Adicionamos um Timeout de 10 segundos. Se o celular não achar o satélite, ele para de tentar e não trava!
+        // DICA EXTRA: Para testes, você pode trocar o true para false abaixo.
+        // False usa a antena do Wi-Fi/4G e é quase instantâneo, mas menos preciso (pode errar uns 50m).
         { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 } 
     );
 }
